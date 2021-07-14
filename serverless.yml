@@ -1,14 +1,16 @@
-service: screenshot
+service: python-service
 
 provider:
-  name: aws
-  runtime: nodejs12.x
+  name: openwhisk
+  runtime: python:3
 
 functions:
-  screenshot:
-    handler: index.screenshot
-    timeout: 20
+  currentTime:
+    handler: handler.endpoint
     events:
-      - httpApi:
-          path: /screenshot
-          method: post
+      - http:
+          path: ping
+          method: get
+
+plugins:
+  - serverless-openwhisk
