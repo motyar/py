@@ -1,16 +1,17 @@
-service: python-service
+service: aws-python-rest-api
+
+frameworkVersion: '2'
+
 
 provider:
-  name: openwhisk
-  runtime: python:3
+  name: aws
+  runtime: python3.8
+  lambdaHashingVersion: '20201221'
 
 functions:
-  currentTime:
-    handler: handler.endpoint
+  hello:
+    handler: handler.hello
     events:
       - http:
-          path: ping
+          path: /
           method: get
-
-plugins:
-  - serverless-openwhisk
