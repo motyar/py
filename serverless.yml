@@ -1,0 +1,14 @@
+service: screenshot
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+functions:
+  screenshot:
+    handler: index.screenshot
+    timeout: 20
+    events:
+      - httpApi:
+          path: /screenshot
+          method: post
