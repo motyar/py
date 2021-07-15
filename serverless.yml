@@ -7,11 +7,25 @@ provider:
   name: aws
   runtime: python3.8
   lambdaHashingVersion: '20201221'
+  
+plugins:
+  - serverless-python-requirements
 
 functions:
-  hello:
+  app:
+    package:
+      include:
+        - "main.py"
+      exclude:
+        - "requirements.txt"
+        - "package.json"
+        - "package-lock.json"
+        - ".serverless/**"
+        - ".virtualenv/**"
+        - "node_modules/**"
+        
     handler: main.handler
     events:
       - http:
-          path: /
-          method: get
+          method: any
+          path: /{proxy+}
