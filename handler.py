@@ -1,21 +1,15 @@
-import json
+from fastapi import FastAPI
+from mangum import Mangum  # <---------- import Mangum library
+
+from api.v1.api import router as api_router
+
+app = FastAPI(title='Serverless Lambda FastAPI')
+
+app.include_router(api_router, prefix="/api/v1")
 
 
-def hello(event, context):
-    body = {
-        "message": "Go Serverless v2.0! Your function executed successfully!",
-        "input": event,
-    }
+@app.get("/",  tags=["Endpoint Test"])
+def main_endpoint_test():
+    return {"message": "Welcome CI/CD Pipeline with GitHub Actions!"}
 
-    response = {"statusCode": 200, "body": json.dumps(body)}
-
-    return response
-
-    # Use this code if you don't use the http event with the LAMBDA-PROXY
-    # integration
-    """
-    return {
-        "message": "Go Serverless v1.0! Your function executed successfully!",
-        "event": event
-    }
-    """
+handler = Mangum(app=app) # <----------- wrap the API with Mangum
