@@ -34,8 +34,6 @@ functions:
     handler: main.handler
     environment:
       STAGE: ${self:provider.stage}
-    layers:
-      - { Ref: PythonRequirementsLambdaLayer }
     events:
       - http:
           method: any
