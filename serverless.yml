@@ -10,7 +10,7 @@ plugins:
 custom:
   pythonRequirements:
     # call `pip install` inside a container - useful for packages that have native dependencies (scipy et-al)
-    dockerizePip: true
+    dockerizePip: false
 
     # aws lambda has an after-extraction size limit - with native dependencies we pass the limit quickly
     # zip the requirements and extract them on the fly (see handler.py)
