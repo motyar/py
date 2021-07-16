@@ -2,8 +2,7 @@ service: aws-python-rest-api
 
 provider:
   name: aws
-  runtime: python3.8
-  lambdaHashingVersion: '20201221'
+  runtime: python3.6
 
 plugins:
   - serverless-python-requirements
