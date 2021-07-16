@@ -2,7 +2,7 @@ service: aws-python-rest-api
 
 provider:
   name: aws
-  runtime: python3.6
+  runtime: python3
 
 plugins:
   - serverless-python-requirements
