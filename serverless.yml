@@ -1,40 +1,17 @@
-service: my-awesome-app
+service: aws-python-rest-api
 
-package:
-  individually: true
+frameworkVersion: '2'
+
 
 provider:
   name: aws
-  runtime: python3.7
-  region: eu-west-1
-  stage: ${opt:stage, "dev"}
-
-custom:
-  pythonRequirements:
-    dockerizePip: true
-    layer:
-      name: my-awesome-app-layer
-      description: My awesome app layer
-      compatibleRuntimes:
-        - python3.7
+  runtime: python3.8
+  lambdaHashingVersion: '20201221'
 
 functions:
-  app:
-    package:
-      include:
-        - "main.py"
-      exclude:
-        - "requirements.txt"
-        - "package.json"
-        - "package-lock.json"
-        - ".serverless/**"
-        - ".virtualenv/**"
-        - "node_modules/**"
-
-    handler: main.handler
-    environment:
-      STAGE: ${self:provider.stage}
+  hello:
+    handler: handler.hello
     events:
       - http:
-          method: any
-          path: /{proxy+}
+          path: /
+          method: get
