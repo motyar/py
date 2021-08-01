@@ -3,7 +3,7 @@ from mangum import Mangum
 
 app = FastAPI(title="MyAwesomeApp")
 
-@app.get("/hello")
+@app.get("/")
 def hello_world():
     return {"message": "Hello World"}
 
