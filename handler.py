@@ -4,7 +4,7 @@ from mangum import Mangum
 app = FastAPI(title="MyAwesomeApp")
 
 @app.get("/")
-def hello_world():
+def hello():
     return {"message": "Hello World"}
 
 handler = Mangum(app)
