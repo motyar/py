@@ -34,4 +34,4 @@ functions:
       - { Ref: PythonRequirementsLambdaLayer }
     events:
        - http: ANY /
-       - http:  ANY {proxy+}
+ 
