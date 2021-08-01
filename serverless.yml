@@ -30,7 +30,7 @@ package:
 
 functions:
   hello:
-    handler: handler.handler
+    handler: main.handler
     events:
        - http: ANY /
        - http:  ANY {proxy+}
